@@ -1,0 +1,6 @@
+Credentials cache: API:0D1CBB07-A425-42A2-9EED-69237609E55A
+        Principal: nghebreh@42ABUDHABI.AE
+
+  Issued                Expires               Principal
+Jun 26 16:12:43 2021  Jun 27 02:12:43 2021  krbtgt/42ABUDHABI.AE@42ABUDHABI.AE
+Jun 26 16:12:45 2021  Jun 27 02:12:43 2021  HTTP/student-storage.42abudhabi.ae@42ABUDHABI.AE
