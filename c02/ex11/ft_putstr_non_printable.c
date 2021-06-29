@@ -1,30 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rev_int_tab.c                                   :+:      :+:    :+:   */
+/*   ft_putstr_non_printable.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nghebreh <nathnael@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/26 00:17:18 by nghebreh          #+#    #+#             */
-/*   Updated: 2021/06/28 23:55:22 by nghebreh         ###   ########.fr       */
+/*   Created: 2021/06/29 18:10:26 by nghebreh          #+#    #+#             */
+/*   Updated: 2021/06/29 18:44:17 by nghebreh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_rev_int_tab(int *tab, int size)
-{
-	int counter;
-	int temp[size];
+#include <unistd.h>
 
-	counter = size - 1;
-	while (counter >= 0)
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
+void ft_putstr_non_printable(char *str)
+{
+	int index;
+
+	index = 0;
+	while (str[index] != '\0')
 	{
-		temp[size - counter - 1] = tab[counter];
-		counter--;
-	}
-	counter = 0;
-	while (counter < size)
-	{
-		tab[counter] = temp[counter];
-		counter++;
+		if (str[index] < 32 || str[index] == 127)
+		{
+			ft_putchar('\\');
+			ft_putchar("0123456789abcdef"[str[index] / 16]);
+			ft_putchar("0123456789abcdef"[str[index] % 16]);
+		}
+		else
+			ft_putchar(str[index]);
+
+		index++;
 	}
 }

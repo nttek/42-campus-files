@@ -1,30 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rev_int_tab.c                                   :+:      :+:    :+:   */
+/*   ft_str_is_alpha.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nghebreh <nathnael@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/26 00:17:18 by nghebreh          #+#    #+#             */
-/*   Updated: 2021/06/28 23:55:22 by nghebreh         ###   ########.fr       */
+/*   Created: 2021/06/29 09:38:36 by nghebreh          #+#    #+#             */
+/*   Updated: 2021/06/29 17:54:30 by nghebreh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_rev_int_tab(int *tab, int size)
+int		is_alphabet(char c)
 {
-	int counter;
-	int temp[size];
+	int is_true;
 
-	counter = size - 1;
-	while (counter >= 0)
+	is_true = 1;
+	if (c < 'A')
+		is_true = 0;
+	else if (c > 'Z' && c < 'a')
+		is_true = 0;
+	else if (c > 'z')
+		is_true = 0;
+	return (is_true);
+}
+
+int		ft_str_is_alpha(char *str)
+{
+	int index;
+
+	index = 0;
+	while (str[index] != '\0')
 	{
-		temp[size - counter - 1] = tab[counter];
-		counter--;
+		if (is_alphabet(str[index]) == 0)
+			return (0);
+		index++;
 	}
-	counter = 0;
-	while (counter < size)
-	{
-		tab[counter] = temp[counter];
-		counter++;
-	}
+	return (1);
 }

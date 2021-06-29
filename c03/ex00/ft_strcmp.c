@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rev_int_tab.c                                   :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nghebreh <nathnael@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/26 00:17:18 by nghebreh          #+#    #+#             */
-/*   Updated: 2021/06/28 23:55:22 by nghebreh         ###   ########.fr       */
+/*   Created: 2021/06/29 19:04:24 by nghebreh          #+#    #+#             */
+/*   Updated: 2021/06/29 19:13:19 by nghebreh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_rev_int_tab(int *tab, int size)
-{
-	int counter;
-	int temp[size];
+#include <string.h>
 
-	counter = size - 1;
-	while (counter >= 0)
+int	ft_strcmp(char *s1, char *s2)
+{
+	while (*s1 != '\0' && (*s1 == *s2))
 	{
-		temp[size - counter - 1] = tab[counter];
-		counter--;
+		s1++;
+		s2++;
 	}
-	counter = 0;
-	while (counter < size)
-	{
-		tab[counter] = temp[counter];
-		counter++;
-	}
+	return (*(unsigned char*)s1 - *(unsigned char*)s2);
 }
