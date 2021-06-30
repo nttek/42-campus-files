@@ -1,21 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nghebreh <nathnael@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/29 19:04:24 by nghebreh          #+#    #+#             */
-/*   Updated: 2021/06/30 06:19:08 by nghebreh         ###   ########.fr       */
+/*   Created: 2021/06/30 07:41:04 by nghebreh          #+#    #+#             */
+/*   Updated: 2021/06/30 08:24:33 by nghebreh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strcmp(char *s1, char *s2)
+char *ft_strstr(char *str, char *to_find)
 {
-	while (*s1 != '\0' && (*s1 == *s2))
+	char *needle;
+
+
+	if(*to_find == '\0')
+		return (str);
+	needle = to_find;
+	while (*str != '\0')
 	{
-		s1++;
-		s2++;
+		if(*needle == '\0')
+			return((char *)(str - (needle - to_find)));
+		if (*str == *needle)
+			needle++;
+		else
+			needle = to_find;
+		str++;
 	}
-	return (*(unsigned char*)s1 - *(unsigned char*)s2);
+	return (0);
 }

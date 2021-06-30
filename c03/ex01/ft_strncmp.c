@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nghebreh <nathnael@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/29 19:04:24 by nghebreh          #+#    #+#             */
-/*   Updated: 2021/06/30 06:19:08 by nghebreh         ###   ########.fr       */
+/*   Created: 2021/06/30 06:49:32 by nghebreh          #+#    #+#             */
+/*   Updated: 2021/06/30 07:15:00 by nghebreh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strcmp(char *s1, char *s2)
+int ft_strncmp(char *s1, char *s2, unsigned int n)
 {
-	while (*s1 != '\0' && (*s1 == *s2))
+	while (*s1 != '\0' && *s2 != '\0' && n > 0)
 	{
+		if (*s1 != *s2)
+			break;
 		s1++;
 		s2++;
+		n--;
 	}
-	return (*(unsigned char*)s1 - *(unsigned char*)s2);
+	if (n == 0)
+		return (0);
+	return(*(unsigned char*)s1 - *(unsigned char*)s2);
 }
