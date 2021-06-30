@@ -6,7 +6,7 @@
 /*   By: nghebreh <nathnael@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 18:10:26 by nghebreh          #+#    #+#             */
-/*   Updated: 2021/06/29 18:44:17 by nghebreh         ###   ########.fr       */
+/*   Updated: 2021/06/30 15:52:12 by nghebreh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_putchar(char c)
 	write(1, &c, 1);
 }
 
-void ft_putstr_non_printable(char *str)
+void	ft_putstr_non_printable(char *str)
 {
 	int index;
 
@@ -32,7 +32,6 @@ void ft_putstr_non_printable(char *str)
 		}
 		else
 			ft_putchar(str[index]);
-
 		index++;
 	}
 }
