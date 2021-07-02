@@ -6,11 +6,11 @@
 /*   By: nghebreh <nathnael@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 08:25:30 by nghebreh          #+#    #+#             */
-/*   Updated: 2021/06/30 09:56:19 by nghebreh         ###   ########.fr       */
+/*   Updated: 2021/07/02 14:42:12 by nghebreh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-not mine 
+//not mine 
 
 unsigned int	ft_str_length_fast(char *dest)
 {
