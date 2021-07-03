@@ -5,19 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nghebreh <nathnael@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/30 08:25:30 by nghebreh          #+#    #+#             */
-/*   Updated: 2021/07/02 14:42:12 by nghebreh         ###   ########.fr       */
+/*   Created: 2021/07/03 19:13:57 by nghebreh          #+#    #+#             */
+/*   Updated: 2021/07/03 19:14:00 by nghebreh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//not mine 
-
-unsigned int	ft_str_length_fast(char *dest)
+unsigned int	ft_strlen(char *str)
 {
 	unsigned int	count;
 
 	count = 0;
-	while (dest[count] != '\0')
+	while (str[count] != '\0')
 		count++;
 	return (count);
 }
@@ -27,23 +25,23 @@ unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 	char			*dst;
 	char			*src_start;
 	unsigned int	dst_length;
-	unsigned int	remaing;
+	unsigned int	available;
 
 	dst = dest;
 	src_start = src;
-	remaing = size;
-	while (remaing-- != 0 && *dst != '\0')
+	available = size;
+	while (available-- != 0 && *dst != '\0')
 		dst++;
 	dst_length = dst - dest;
-	remaing = size - dst_length;
-	if (remaing == 0)
-		return (dst_length + ft_str_length_fast(src));
+	available = size - dst_length;
+	if (available == 0)
+		return (dst_length + ft_strlen(src));
 	while (*src != '\0')
 	{
-		if (remaing > 1)
+		if (available > 1)
 		{
 			*dst++ = *src;
-			remaing--;
+			available--;
 		}
 		src++;
 	}

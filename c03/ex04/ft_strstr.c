@@ -6,22 +6,21 @@
 /*   By: nghebreh <nathnael@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 07:41:04 by nghebreh          #+#    #+#             */
-/*   Updated: 2021/06/30 08:24:33 by nghebreh         ###   ########.fr       */
+/*   Updated: 2021/07/03 19:12:11 by nghebreh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char *ft_strstr(char *str, char *to_find)
+char	*ft_strstr(char *str, char *to_find)
 {
 	char *needle;
 
-
-	if(*to_find == '\0')
+	if (*to_find == '\0')
 		return (str);
 	needle = to_find;
 	while (*str != '\0')
 	{
-		if(*needle == '\0')
-			return((char *)(str - (needle - to_find)));
+		if (*needle == '\0')
+			return ((char *)(str - (needle - to_find)));
 		if (*str == *needle)
 			needle++;
 		else
