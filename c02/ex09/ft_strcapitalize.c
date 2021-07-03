@@ -6,35 +6,33 @@
 /*   By: nghebreh <nathnael@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 08:34:10 by nghebreh          #+#    #+#             */
-/*   Updated: 2021/06/29 09:05:05 by nghebreh         ###   ########.fr       */
+/*   Updated: 2021/07/03 15:04:22 by nghebreh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_change_case(char *c)
+void	to_upper(char *c)
 {
 	if (*c >= 'a' && *c <= 'z')
-	{
 		*c = *c - 32;
-	}
-	else if (*c >= 'A' && *c <= 'Z')
-	{
+}
+
+void	to_lower(char *c)
+{
+	if (*c >= 'A' && *c <= 'Z')
 		*c = *c + 32;
-	}
 }
 
 int		is_alphanumeric(char c)
 {
 	int is_true;
 
-	is_true = 1;
-	if (c < '0')
-		is_true = 0;
-	else if (c > '9' && c < 'A')
-		is_true = 0;
-	else if (c > 'Z' && c < 'a')
-		is_true = 0;
-	else if (c > 'z')
-		is_true = 0;
+	is_true = 0;
+	if (c >= '0' && c <= '9')
+		is_true = 1;
+	else if (c >= 'A' && c <= 'Z')
+		is_true = 1;
+	else if (c >= 'a' && c <= 'z')
+		is_true = 1;
 	return (is_true);
 }
 
@@ -48,11 +46,9 @@ char	*ft_strcapitalize(char *str)
 	while (str[index] != '\0')
 	{
 		if (is_alphanumeric(last) == 0)
-			ft_change_case(&str[index]);
+			to_upper(&str[index]);
 		else if (str[index] >= 'A' && str[index] <= 'Z')
-		{
-			ft_change_case(&str[index]);
-		}
+			to_lower(&str[index]);
 		last = str[index];
 		index++;
 	}
