@@ -1,35 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_rev_params.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nghebreh <nathnael@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/04 14:55:50 by nghebreh          #+#    #+#             */
-/*   Updated: 2021/07/04 15:09:30 by nghebreh         ###   ########.fr       */
+/*   Created: 2021/07/04 19:49:44 by nghebreh          #+#    #+#             */
+/*   Updated: 2021/07/04 19:50:53 by nghebreh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(char *str)
-{
-	int sign;
-	int result;
+#include <unistd.h>
 
-	while (*str == ' ')
-		str++;
-	sign = 1;
-	while (*str == '-' || *str == '+')
-	{
-		if (*str == '-')
-			sign *= -1;
-		str++;
-	}
-	result = 0;
-	while (*str >= '0' && *str <= '9')
-	{
-		result *= 10;
-		result += *str - '0';
-		str++;
-	}
-	return (result * sign);
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
 }
+
+void	ft_putstr(char *str)
+{
+	int counter;
+
+	counter = 0;
+	while (str[counter] != '\0')
+	{
+		ft_putchar(str[counter]);
+		counter++;
+	}
+}
+
+int		main(int argc, char *argv[])
+{
+	int i;
+
+	while (argc > 1)
+	{
+		ft_putstr(argv[argc - 1]);
+		ft_putchar('\n');
+		argc--;
+	}
+
+	return (0);
+}
+

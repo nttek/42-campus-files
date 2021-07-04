@@ -1,17 +1,39 @@
-void ft_putnbr(int nb)
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nghebreh <nathnael@gmail.com>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/07/04 14:48:17 by nghebreh          #+#    #+#             */
+/*   Updated: 2021/07/04 14:48:28 by nghebreh         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+
+void	ft_putchar(char c)
 {
-	if (nb == -2147483648)
+	write(1, &c, 1);
+}
+
+void	ft_putnbr(int nb)
+{
+	long i;
+
+	i = nb;
+	if (i < 0)
 	{
 		ft_putchar('-');
-		ft_putchar('2');
-		nb = 147483648;
+		i = i * -1;
 	}
-
-	else if (nb < 0)
+	if (i > 9)
 	{
-		ft_putchar('-');
-		nb *= 1;
+		ft_putnbr(i / 10);
+		ft_putnbr(i % 10);
 	}
-
-	
+	else
+	{
+		ft_putchar(i + '0');
+	}
 }

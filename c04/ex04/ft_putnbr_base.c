@@ -1,14 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nghebreh <nathnael@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/03 20:02:07 by nghebreh          #+#    #+#             */
-/*   Updated: 2021/07/04 15:38:38 by nghebreh         ###   ########.fr       */
+/*   Created: 2021/07/04 15:10:48 by nghebreh          #+#    #+#             */
+/*   Updated: 2021/07/04 18:11:23 by nghebreh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <unistd.h>
+
+void ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
 
 int	ft_strlen(char *str)
 {
@@ -18,4 +25,33 @@ int	ft_strlen(char *str)
 	while (str[count] != '\0')
 		count++;
 	return (count);
+}
+
+int is_base_valid(char *base)
+{
+	//check for size
+	//check for repetitions
+	//check for +-
+	return (0);
+}
+
+void ft_putnbr_base(int nbr, char *base)
+{
+	//check base validty
+	//if valid;
+	int len;
+	
+	len = ft_strlen(base);
+	while (nbr > 0)
+	{
+		ft_putchar(base[nbr%len - 1]);
+		nbr /= len;
+	}
+
+}
+
+int main(int argc, char* argv[])
+{
+	ft_putnbr_base(12, "0123456789ABCDEF");
+	return (0);
 }
