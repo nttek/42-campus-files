@@ -6,7 +6,7 @@
 /*   By: nghebreh <nathnael@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 18:59:59 by nghebreh          #+#    #+#             */
-/*   Updated: 2021/07/04 19:47:29 by nghebreh         ###   ########.fr       */
+/*   Updated: 2021/07/05 10:43:14 by nghebreh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,5 @@ int		main(int argc, char *argv[])
 		ft_putchar('\n');
 		i++;
 	}
-
 	return (0);
 }

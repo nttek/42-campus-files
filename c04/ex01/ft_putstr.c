@@ -6,9 +6,11 @@
 /*   By: nghebreh <nathnael@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 20:04:44 by nghebreh          #+#    #+#             */
-/*   Updated: 2021/07/03 20:11:17 by nghebreh         ###   ########.fr       */
+/*   Updated: 2021/07/05 11:12:01 by nghebreh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <unistd.h>
 
 void	ft_putchar(char c)
 {

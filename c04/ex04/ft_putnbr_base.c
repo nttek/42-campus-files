@@ -6,7 +6,7 @@
 /*   By: nghebreh <nathnael@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 15:10:48 by nghebreh          #+#    #+#             */
-/*   Updated: 2021/07/04 18:11:23 by nghebreh         ###   ########.fr       */
+/*   Updated: 2021/07/05 11:20:56 by nghebreh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,6 @@ void ft_putnbr_base(int nbr, char *base)
 
 int main(int argc, char* argv[])
 {
-	ft_putnbr_base(12, "0123456789ABCDEF");
+	ft_putnbr_base(20, "0123456789ABCDEF");
 	return (0);
 }
