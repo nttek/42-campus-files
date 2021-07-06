@@ -6,7 +6,7 @@
 /*   By: nghebreh <nathnael@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 15:10:48 by nghebreh          #+#    #+#             */
-/*   Updated: 2021/07/05 11:20:56 by nghebreh         ###   ########.fr       */
+/*   Updated: 2021/07/05 21:03:01 by nghebreh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,20 @@ void ft_putnbr_base(int nbr, char *base)
 {
 	//check base validty
 	//if valid;
-	int len;
+	int radix;
 	
-	len = ft_strlen(base);
+	radix = ft_strlen(base);
 	while (nbr > 0)
 	{
-		ft_putchar(base[nbr%len - 1]);
-		nbr /= len;
+		if (nbr < radix)
+		{
+			//ft_putchar(base[nbr%radix]);
+			//break ;
+		}
+		ft_putchar(base[nbr/radix]);
+		nbr /= radix;
 	}
-
+	ft_putchar(base[nbr%radix]);
 }
 
 int main(int argc, char* argv[])
