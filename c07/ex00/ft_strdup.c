@@ -6,38 +6,28 @@
 /*   By: nghebreh <nathnael@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 15:21:41 by nghebreh          #+#    #+#             */
-/*   Updated: 2021/07/06 16:01:05 by nghebreh         ###   ########.fr       */
+/*   Updated: 2021/07/09 16:16:17 by nghebreh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-char *ft_strdup(char *src)
+char	*ft_strdup(char *src)
 {
-	char *str = src;
-	while (*src)
+	int		i;
+	char	*dest;
 
-	char *dest = malloc(5*sizeof('a'));
-	char *temp = str;
-	while (*src != '\0')
+	i = 0;
+	while (src[i])
+		i++;
+	if ((dest = (char *)malloc((i + 1) * sizeof(char))) == NULL)
+		return (0);
+	i = 0;
+	while (src[i])
 	{
-		*dest = *src;
-		src++;
-		dest++;
+		dest[i] = src[i];
+		i++;
 	}
+	dest[i] = '\0';
 	return (dest);
-}
-
-#include <stdio.h>
-int main()
-{
-	char src [] = "why";
-	char *copied = ft_strdup(src);
-	while (*copied)
-	{
-		printf("%c", *copied);
-		copied++;
-	}
-
-	printf("%lu\n", sizeof('a'));
 }

@@ -1,30 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nghebreh <nathnael@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/25 22:26:21 by nghebreh          #+#    #+#             */
-/*   Updated: 2021/07/05 18:47:54 by nghebreh         ###   ########.fr       */
+/*   Created: 2021/07/09 17:32:56 by nghebreh          #+#    #+#             */
+/*   Updated: 2021/07/09 18:45:09 by nghebreh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdlib.h>
 
-void	ft_putchar(char c)
+char	*ft_strjoin(int size, char **strs, char *sep)
 {
-	write(1, &c, 1);
+	int		i;
+	int		k;
+	int		length;
+	char	*joined;
+
+	i = 0;
+	length = 0;
+	while (i < size)
+	{
+		length += ft_strlen(str[i++]);
+	}
+	joined = malloc((length + 1) * sizeof(char));
+	i = 0;
+	while (i < size)
+	{
+		while(strs[i])
+
+	}
 }
 
-void	ft_putstr(char *str)
+int main()
 {
-	int counter;
-
-	counter = 0;
-	while (str[counter] != '\0')
-	{
-		ft_putchar(str[counter]);
-		counter++;
-	}
 }

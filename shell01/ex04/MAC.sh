@@ -1,1 +1,1 @@
-ifconfig -a | grep ether | sed 's/ether//g' | sed 's/[[:space:]]//g'
+ifconfig | grep ether | grep -v media | cut -d' ' -f2

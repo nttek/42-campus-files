@@ -6,13 +6,11 @@
 /*   By: nghebreh <nathnael@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 21:15:13 by nghebreh          #+#    #+#             */
-/*   Updated: 2021/07/05 10:40:25 by nghebreh         ###   ########.fr       */
+/*   Updated: 2021/07/09 10:11:09 by nghebreh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-
-#define MAX_SIZE 1000
 
 void	ft_putstr(char *str)
 {
@@ -29,7 +27,7 @@ void	ft_putstr(char *str)
 
 int		ft_strcmp(char *s1, char *s2)
 {
-	while (*s1 != '\0' && (*s1 == *s2))
+	while (*s1 && *s2 && (*s1 == *s2))
 	{
 		s1++;
 		s2++;
@@ -37,41 +35,36 @@ int		ft_strcmp(char *s1, char *s2)
 	return (*(unsigned char*)s1 - *(unsigned char*)s2);
 }
 
-char	*ft_strcpy(char *dest, char *src)
+void	ft_swap(char **a, char **b)
 {
-	int index;
+	char *c;
 
-	index = 0;
-	while (src[index] != '\0')
-	{
-		dest[index] = src[index];
-		index++;
-	}
-	dest[index] = '\0';
-	return (dest);
+	c = *a;
+	*a = *b;
+	*b = c;
 }
 
-void	ft_sortstr(int count, char *strv[])
+void	ft_sortstr(char **arr, int size)
 {
-	char		temp[MAX_SIZE];
-	int			i;
-	int			j;
+	int		index;
+	int		swapped;
 
-	i = 0;
-	while (i < count)
+	index = 1;
+	while (1)
 	{
-		j = 0;
-		while (j < count - 1 - i)
+		index = 1;
+		swapped = 0;
+		while (index < size)
 		{
-			if (ft_strcmp(strv[j], strv[j + 1]) > 0)
+			if (ft_strcmp(arr[index], arr[index + 1]) > 0)
 			{
-				ft_strcpy(temp, strv[j]);
-				ft_strcpy(strv[j], strv[j + 1]);
-				ft_strcpy(strv[j + 1], temp);
+				ft_swap(&arr[index], &arr[index + 1]);
+				swapped = 1;
 			}
-			j++;
+			index++;
 		}
-		i++;
+		if (!swapped)
+			break ;
 	}
 }
 
@@ -79,7 +72,7 @@ int		main(int argc, char *argv[])
 {
 	int i;
 
-	ft_sortstr(argc, argv);
+	ft_sortstr(argv, argc - 1);
 	i = 1;
 	while (i < argc)
 	{

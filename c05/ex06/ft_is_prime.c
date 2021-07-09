@@ -6,23 +6,22 @@
 /*   By: nghebreh <nathnael@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 14:54:30 by nghebreh          #+#    #+#             */
-/*   Updated: 2021/07/05 17:33:33 by nghebreh         ###   ########.fr       */
+/*   Updated: 2021/07/08 17:20:44 by nghebreh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_sqrt(int nb)
 {
-	int		i;
 	double	x;
 	double	root;
 
 	x = nb;
-	i = 20;
-	while (i > 0)
+	while (1)
 	{
 		root = 0.5 * (x + nb / x);
 		x = root;
-		i--;
+		if ((root * root - nb) < 0.1)
+			break ;
 	}
 	return ((int)root);
 }
@@ -33,12 +32,16 @@ int	ft_is_prime(int nb)
 	int sqrt;
 
 	if (nb <= 3)
-		return (nb > 1 ? 1 : 0);
+		return (nb > 1);
 	if (nb % 2 == 0 || nb % 3 == 0)
 		return (0);
-	i = 2;
+	i = 5;
 	sqrt = ft_sqrt(nb);
-	while ((i <= sqrt) && (nb % i != 0))
-		i++;
-	return (i > sqrt ? 1 : 0);
+	while (i <= sqrt)
+	{
+		if (nb % i == 0 || nb % (i + 2) == 0)
+			return (0);
+		i += 6;
+	}
+	return (1);
 }

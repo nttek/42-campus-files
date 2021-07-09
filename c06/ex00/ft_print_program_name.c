@@ -6,7 +6,7 @@
 /*   By: nghebreh <nathnael@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 18:50:12 by nghebreh          #+#    #+#             */
-/*   Updated: 2021/07/04 18:58:34 by nghebreh         ###   ########.fr       */
+/*   Updated: 2021/07/09 12:24:09 by nghebreh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,7 @@ void	ft_putstr(char *str)
 int		main(int argc, char *argv[])
 {
 	ft_putstr(argv[0]);
+	ft_putchar('\n');
+	(void)argc;
 	return (0);
 }
