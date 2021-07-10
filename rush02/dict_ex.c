@@ -2,17 +2,15 @@
 #include <stdlib.h>
 #include <string.h>
 
-char* itoa(int value, char* result, int base) {
-    // check that the base if valid
-    if (base < 2 || base > 36) { *result = '\0'; return result; }
+char* ft_itoa(int value, char* result) {
 
     char* ptr = result, *ptr1 = result, tmp_char;
     int tmp_value;
 
     do {
         tmp_value = value;
-        value /= base;
-        *ptr++ = "zyxwvutsrqponmlkjihgfedcba9876543210123456789abcdefghijklmnopqrstuvwxyz" [35 + (tmp_value - value * base)];
+        value /= 10;
+        *ptr++ = "zyxwvutsrqponmlkjihgfedcba9876543210123456789abcdefghijklmnopqrstuvwxyz" [35 + (tmp_value - value * 10)];
     } while ( value );
 
     // Apply negative sign
@@ -37,8 +35,8 @@ char *int2words(int num)
 	if ((buffer = (char *)malloc((256) * sizeof(char))) == NULL)
 		return (0);
 
-    itoa(num, numstr, 10);
-    static const char d[28][2][15] = {
+    ft_itoa(num, numstr); 
+		char d[28][2][15] = {
             "0", "zero", 
             "1", "one",
             "2", "two", 
@@ -107,7 +105,7 @@ char *int2words(int num)
         else
         {
             char divstr[256];
-            itoa(div * 10, divstr, 10);
+            ft_itoa(div * 10, divstr);
             i = 0;
             while (i < 28)
             {
@@ -120,7 +118,7 @@ char *int2words(int num)
             }
             i = 0;
             char modstr[256];
-            itoa(mod, modstr, 10);
+            ft_itoa(mod, modstr);
             while (i < 28)
             {
                 if (strcmp(modstr, d[i][0]) == 0)
@@ -137,7 +135,7 @@ char *int2words(int num)
     else {
             char        *word1;
             char        *word2;
-            long        divisor; //unnecessarily huge
+            int        divisor; 
 
             if (num < 1000)
             {
@@ -191,7 +189,67 @@ char *int2words(int num)
     return (buffer); //redundant
 }
 
-int main()
+
+int is_space(char *str)
 {
-    printf(int2words(2147483647));
+	char *space = "\t\n\v\f\v ";
+	if (*str == ' ' || *str == '\t' || *str == '\n')
+		return (1);
+	else if (*str == '\v' || *str == '\f' || *str == '\r')
+		return (1);
+	return (0);
+}
+
+int	ft_atoi(char *str)
+{
+	int sign;
+	int result;
+
+	while (is_space(str))
+		str++;
+	sign = 1;
+	while (*str == '-' || *str == '+')
+	{
+		if (*str == '-')
+			sign *= -1;
+		str++;
+	}
+	result = 0;
+	while (*str >= '0' && *str <= '9')
+	{
+		result *= 10;
+		result += *str - '0';
+		str++;
+	}
+	return (result * sign);
+}
+
+int main(int argc, char **argv)
+{
+	int num;
+
+	if (argc == 2)
+	{
+		num = ft_atoi(argv[1]);
+		if (num < 0 || num > 2147483647)
+		{
+			printf("ERROR");
+			return (0);
+		}
+		printf("%d = %s\n",num, int2words(num));
+	}
+	else if (argc == 3)
+		;//do something with the dict
+/*
+	printf("-2147483648 = %s\n", int2words(-2147483648));
+    printf("0 = %s\n", int2words(0));
+	printf("9 = %s\n", int2words(9));
+	printf("14 = %s\n", int2words(14));
+	printf("30 = %s\n", int2words(30));
+	printf("32= %s\n", int2words(32));
+	printf("100 = %s\n", int2words(100));
+	printf("201= %s\n", int2words(201));
+	printf("1004= %s\n", int2words(1004));
+	printf("2147483647 = %s\n", int2words(2147483647));
+*/
 }
