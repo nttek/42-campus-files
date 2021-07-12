@@ -24,13 +24,13 @@ char* ft_itoa(int value, char* result) {
     return result;
 }
 
-char *int2words(int num)
+char *int2words(unsigned int num)
 {
     char *buffer;
     char numstr[256];
 
-    int div;
-    int mod;
+    unsigned int div;
+    unsigned int mod;
 
 	if ((buffer = (char *)malloc((256) * sizeof(char))) == NULL)
 		return (0);
@@ -87,8 +87,8 @@ char *int2words(int num)
     }
     if (num < 100)
     {
-        div = num / 10;
-        mod = num % 10;
+		div = num / 10;
+		mod = num % 10;
 
         if (mod == 0)
         {
@@ -133,9 +133,9 @@ char *int2words(int num)
     } 
 
     else {
-            char        *word1;
-            char        *word2;
-            int        divisor; 
+            char        	*word1;
+            char        	*word2;
+            unsigned int	divisor; 
 
             if (num < 1000)
             {
@@ -164,9 +164,9 @@ char *int2words(int num)
                 word1 = b[0];
                 word2 = b[1];
             }
-   
-        div = num / divisor;
-        mod = num % divisor;
+
+			div = num / divisor;
+			mod = num % divisor;
 
         if (mod == 0)
         {
@@ -189,21 +189,24 @@ char *int2words(int num)
     return (buffer); //redundant
 }
 
-
 int is_space(char *str)
 {
-	char *space = "\t\n\v\f\v ";
-	if (*str == ' ' || *str == '\t' || *str == '\n')
-		return (1);
-	else if (*str == '\v' || *str == '\f' || *str == '\r')
-		return (1);
+	char *space;
+   
+	space = "\t\n\v\f\v ";
+	while (*space)
+	{
+		if (*space == *str)
+		   return (1);
+		space++;
+	}
 	return (0);
 }
 
-int	ft_atoi(char *str)
+unsigned int	ft_atoi(char *str)
 {
-	int sign;
-	int result;
+	int				sign;
+	unsigned int	result;
 
 	while (is_space(str))
 		str++;
@@ -214,6 +217,8 @@ int	ft_atoi(char *str)
 			sign *= -1;
 		str++;
 	}
+	if (sign == -1)
+		return (0);
 	result = 0;
 	while (*str >= '0' && *str <= '9')
 	{
@@ -221,17 +226,17 @@ int	ft_atoi(char *str)
 		result += *str - '0';
 		str++;
 	}
-	return (result * sign);
+	return (result);
 }
 
 int main(int argc, char **argv)
 {
-	int num;
+	unsigned int num;
 
 	if (argc == 2)
 	{
 		num = ft_atoi(argv[1]);
-		if (num < 0 || num > 2147483647)
+		if (num < 0 || num > 4294967295)
 		{
 			printf("ERROR");
 			return (0);
