@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
+/*   dev_ft_atoi_base.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nghebreh <nathnael@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/04 15:10:48 by nghebreh          #+#    #+#             */
-/*   Updated: 2021/07/13 22:11:34 by nghebreh         ###   ########.fr       */
+/*   Created: 2021/07/13 15:59:53 by nghebreh          #+#    #+#             */
+/*   Updated: 2021/07/13 22:18:56 by nghebreh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ int		ft_strlen(char *str)
 	return (count);
 }
 
-int		is_space_operator(char str)
+int		is_space(char str)
 {
 	char *space;
 
-	space = "\t\n\v\f\v +-";
+	space = "\t\n\v\f\v ";
 	while (*space)
 	{
 		if (*space == str)
@@ -48,7 +48,7 @@ int		is_base_valid(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (is_space_operator(str[i]))
+		if (is_space(str[i]) || str[i] == '+' || str[i] == '-')
 			return (0);
 		i++;
 	}
@@ -64,25 +64,48 @@ int		is_base_valid(char *str)
 	return (1);
 }
 
-void	ft_putnbr_valid_base(long number, char *base, int radix)
+int		base_to_dec(char *base, char str)
 {
-	if (number < 0)
+	char *temp;
+
+	temp = base;
+	while (*base)
 	{
-		write(1, "-", 1);
-		ft_putnbr_valid_base(-number, base, radix);
-		return ;
+		if (*base == str)
+			return (base - temp);
+		base++;
 	}
-	if (number > radix - 1)
-		ft_putnbr_valid_base(number / radix, base, radix);
-	write(1, &(base[number % radix]), 1);
+	return (-1);
 }
 
-void	ft_putnbr_base(int nbr, char *base)
+int		ft_atoi_base(char *str, char *base)
 {
-	int	radix;
+	int		radix;
+	int		sign;
+	int		nbr;
+	int		next;
 
 	if (!is_base_valid(base))
-		return ;
+		return (0);
+	while (is_space(*str))
+		str++;
+	sign = 1;
+	while (*str == '-' || *str == '+')
+	{
+		if (*str++ == '-')
+			sign *= -1;
+	}
+	nbr = 0;
 	radix = ft_strlen(base);
-	ft_putnbr_valid_base(nbr, base, radix);
+	while ((next = base_to_dec(base, *str++)) != -1)
+		nbr = nbr * radix + next;
+	return ((nbr * sign));
+}
+
+#include <stdio.h>
+int		main(void)
+{
+	printf("%d\n", ft_atoi_base("-123456", "0123456789"));
+	printf("%d\n", ft_atoi_base("11110001001000000", "01"));
+	printf("%d\n", ft_atoi_base("-1e240", "0123456789abcdef"));
 }

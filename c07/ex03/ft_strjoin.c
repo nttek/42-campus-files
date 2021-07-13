@@ -6,21 +6,11 @@
 /*   By: nghebreh <nathnael@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/09 17:32:56 by nghebreh          #+#    #+#             */
-/*   Updated: 2021/07/10 17:24:08 by nghebreh         ###   ########.fr       */
+/*   Updated: 2021/07/13 23:53:13 by nghebreh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-
-int			ft_strlen(char *str)
-{
-	int count;
-
-	count = 0;
-	while (str[count] != '\0')
-		count++;
-	return (count);
-}
 
 char		*ft_strjoin(int size, char **strs, char *sep)
 {
@@ -30,11 +20,9 @@ char		*ft_strjoin(int size, char **strs, char *sep)
 	int		length;
 	char	*joined;
 
-	i = 0;
-	length = 0;
-	while (i < size)
-		length += ft_strlen(strs[i++]);
-	joined = malloc((length + 1) * sizeof(char));
+	joined = (char *)malloc(sizeof(strs));
+	if (!joined)
+		return (NULL);
 	i = 0;
 	j = 0;
 	while (i < size)

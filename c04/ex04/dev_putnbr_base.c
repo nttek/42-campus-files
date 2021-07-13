@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
+/*   dev_putnbr_base.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nghebreh <nathnael@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 15:10:48 by nghebreh          #+#    #+#             */
-/*   Updated: 2021/07/13 22:11:34 by nghebreh         ###   ########.fr       */
+/*   Updated: 2021/07/13 22:12:26 by nghebreh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,4 +85,16 @@ void	ft_putnbr_base(int nbr, char *base)
 		return ;
 	radix = ft_strlen(base);
 	ft_putnbr_valid_base(nbr, base, radix);
+}
+
+int main()
+{
+	ft_putnbr_base(20, "0123456789ABCDEF");
+	write(1, "\n", 1);
+	ft_putnbr_base(-2147483648, "0123456789");
+	write(1, "\n", 1);
+	ft_putnbr_base(-2147483648, "0123456789ABCDEF");
+	write(1, "\n", 1);
+	ft_putnbr_base(1, "helo");
+	return (0);
 }
